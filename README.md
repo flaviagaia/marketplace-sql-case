@@ -2,101 +2,74 @@
 
 ## Português
 
-`marketplace-sql-case` é um repositório focado em **SQL para analytics de marketplace**, organizado como um case técnico compacto e executável.
+### Visão geral
 
-O repositório cobre um cenário comum em plataformas transacionais com múltiplas verticais de negócio:
+`marketplace-sql-case` é um repositório de SQL para analytics de marketplace, organizado como um case técnico compacto e executável.
+
+Ele cobre:
 
 - ranking de merchants por volume;
 - inclusão de merchants sem pedidos;
 - top-N com tratamento de empate;
-- leitura de comportamento cross-vertical de clientes;
-- cálculo mensal da porcentagem de clientes que compram em mais de uma vertical.
+- comportamento cross-vertical de clientes;
+- porcentagem mensal de clientes que compram em mais de uma vertical.
 
-## Estrutura
+### Estrutura
 
 - [sql/01_schema.sql](/Users/flaviagaia/Documents/CV_FLAVIA_CODEX/marketplace-sql-case/sql/01_schema.sql)
-  - schema das tabelas `delivery_orders` e `business_info`
 - [sql/02_seed_data.sql](/Users/flaviagaia/Documents/CV_FLAVIA_CODEX/marketplace-sql-case/sql/02_seed_data.sql)
-  - dados sintéticos de exemplo
 - [sql/03_q1a_business_order_counts.sql](/Users/flaviagaia/Documents/CV_FLAVIA_CODEX/marketplace-sql-case/sql/03_q1a_business_order_counts.sql)
-  - contagem de pedidos por negócio em uma vertical específica
 - [sql/04_q1b_top3_rx_last_quarter.sql](/Users/flaviagaia/Documents/CV_FLAVIA_CODEX/marketplace-sql-case/sql/04_q1b_top3_rx_last_quarter.sql)
-  - top 3 negócios por pedidos com tratamento de empate
 - [sql/05_q2a_query_explanation.sql](/Users/flaviagaia/Documents/CV_FLAVIA_CODEX/marketplace-sql-case/sql/05_q2a_query_explanation.sql)
-  - explicação do objetivo da query intermediária
 - [sql/06_q2b_cross_vertical_monthly_pct.sql](/Users/flaviagaia/Documents/CV_FLAVIA_CODEX/marketplace-sql-case/sql/06_q2b_cross_vertical_monthly_pct.sql)
-  - cálculo mensal da porcentagem de clientes `both`
 
-## Conceitos SQL demonstrados
+### Estrutura analítica do case
 
-- `LEFT JOIN`
-- `COUNT(DISTINCT ...)`
-- `CASE WHEN`
-- filtros temporais por janela
-- agregação por entidade
-- `DENSE_RANK()`
-- CTEs
-- análise cross-vertical
-- cohorting mensal com `DATE(..., 'start of month')`
-
-## Estrutura analítica do case
-
-O repositório foi organizado para cobrir dois blocos de problema muito comuns em analytics de marketplace:
-
-### 1. Merchant-side analytics
+#### 1. Merchant-side analytics
 
 - volume por merchant
 - inclusão de entidades sem pedidos
 - ranking com empate
 
-### 2. Customer behavior analytics
+#### 2. Customer behavior analytics
 
 - classificação de clientes por vertical
 - identificação de clientes `both`
 - evolução mensal de adoção cross-vertical
 
-## Modelo de dados
+### Conceitos SQL demonstrados
 
-### `delivery_orders`
+- `LEFT JOIN`
+- `COUNT(DISTINCT ...)`
+- `CASE WHEN`
+- filtros temporais
+- agregação por entidade
+- `DENSE_RANK()`
+- CTEs
+- análise cross-vertical
+- cohorting mensal
 
-- `delivery_id`
-- `order_place_time`
-- `business_line`
-- `business_id`
-- `dasher_id`
-- `customer_id`
+### Resultados de referência
 
-### `business_info`
+#### Q1A
 
-- `business_id`
-- `business_name`
-- `business_size`
-- `phone_number`
+- `Bob's burgers | 12`
+- `Clara's canteen | 10`
+- `Danny's deli | 2`
+- `Elle's eatery | 0`
 
-## O que este case mostra tecnicamente
+#### Q1B
 
-### 1. Merchant-level analytics
+- `Bob's burgers | 12`
+- `Clara's canteen | 10`
+- `Danny's deli | 2`
 
-As queries da primeira parte mostram como:
+#### Q2B
 
-- contar pedidos por merchant;
-- incluir merchants com zero pedidos;
-- ordenar por volume;
-- e resolver top-N com empate.
+- `2021-01-01 | 0.05`
+- `2021-02-01 | 0.07`
 
-### 2. Customer cross-vertical behavior
-
-As queries da segunda parte mostram como:
-
-- resumir o comportamento de compra por cliente;
-- distinguir clientes `rx`, `nv` e `both`;
-- calcular a porcentagem mensal de clientes multiverticais.
-
-Essa parte é especialmente útil para portfólio porque demonstra análise de comportamento de usuário, não só agregação operacional.
-
-## Como executar
-
-Fluxo sugerido em SQLite:
+### Como executar
 
 ```bash
 sqlite3 marketplace_sql_case.db
@@ -108,51 +81,91 @@ sqlite3 marketplace_sql_case.db
 .read sql/06_q2b_cross_vertical_monthly_pct.sql
 ```
 
-## Resultados de referência
+### Como defender em entrevista
 
-### Q1A
+> Este case mostra analytics operacional e comportamental no mesmo repositório: ranking de merchants, inclusão de zero-order merchants, top-N com empate e comportamento cross-vertical mensal de clientes.
+
+## English
+
+### Overview
+
+`marketplace-sql-case` is a SQL repository for marketplace analytics, organized as a compact and runnable technical case.
+
+It covers:
+
+- merchant ranking by order volume
+- inclusion of zero-order merchants
+- top-N with tie handling
+- customer cross-vertical behavior
+- monthly share of customers ordering from more than one business line
+
+### Repository structure
+
+- [sql/01_schema.sql](/Users/flaviagaia/Documents/CV_FLAVIA_CODEX/marketplace-sql-case/sql/01_schema.sql)
+- [sql/02_seed_data.sql](/Users/flaviagaia/Documents/CV_FLAVIA_CODEX/marketplace-sql-case/sql/02_seed_data.sql)
+- [sql/03_q1a_business_order_counts.sql](/Users/flaviagaia/Documents/CV_FLAVIA_CODEX/marketplace-sql-case/sql/03_q1a_business_order_counts.sql)
+- [sql/04_q1b_top3_rx_last_quarter.sql](/Users/flaviagaia/Documents/CV_FLAVIA_CODEX/marketplace-sql-case/sql/04_q1b_top3_rx_last_quarter.sql)
+- [sql/05_q2a_query_explanation.sql](/Users/flaviagaia/Documents/CV_FLAVIA_CODEX/marketplace-sql-case/sql/05_q2a_query_explanation.sql)
+- [sql/06_q2b_cross_vertical_monthly_pct.sql](/Users/flaviagaia/Documents/CV_FLAVIA_CODEX/marketplace-sql-case/sql/06_q2b_cross_vertical_monthly_pct.sql)
+
+### Analytical structure
+
+#### 1. Merchant-side analytics
+
+- volume by merchant
+- inclusion of zero-order entities
+- ranking with tie handling
+
+#### 2. Customer behavior analytics
+
+- classifying customers by business line
+- identifying `both` customers
+- monthly evolution of cross-vertical adoption
+
+### SQL concepts demonstrated
+
+- `LEFT JOIN`
+- `COUNT(DISTINCT ...)`
+- `CASE WHEN`
+- time-window filtering
+- entity-level aggregation
+- `DENSE_RANK()`
+- CTEs
+- cross-vertical analysis
+- monthly cohorting
+
+### Reference results
+
+#### Q1A
 
 - `Bob's burgers | 12`
 - `Clara's canteen | 10`
 - `Danny's deli | 2`
 - `Elle's eatery | 0`
 
-### Q1B
+#### Q1B
 
 - `Bob's burgers | 12`
 - `Clara's canteen | 10`
 - `Danny's deli | 2`
 
-### Q2B
+#### Q2B
 
 - `2021-01-01 | 0.05`
 - `2021-02-01 | 0.07`
 
-## Como ler este repositório tecnicamente
+### How to run
 
-- `01_schema.sql`
-  - define o modelo relacional mínimo
-- `02_seed_data.sql`
-  - cria um dataset pequeno, mas suficiente para validar os casos
-- `03` e `04`
-  - cobrem merchant-level analytics
-- `05` e `06`
-  - cobrem customer-level cross-vertical analytics
+```bash
+sqlite3 marketplace_sql_case.db
+.read sql/01_schema.sql
+.read sql/02_seed_data.sql
+.read sql/03_q1a_business_order_counts.sql
+.read sql/04_q1b_top3_rx_last_quarter.sql
+.read sql/05_q2a_query_explanation.sql
+.read sql/06_q2b_cross_vertical_monthly_pct.sql
+```
 
-## Como defender em entrevista
+### Interview framing
 
-> Este case mostra que eu sei trabalhar tanto com analytics operacional quanto com comportamento de clientes em múltiplas verticais. Ele cobre joins, distinct counts, ranking com empate e análise cross-vertical mensal, que são padrões muito comuns em SQL de produto e marketplace.
-
-## English
-
-`marketplace-sql-case` is a compact SQL repository focused on **marketplace analytics casework**.
-
-It covers:
-
-- merchant order counts
-- inclusion of zero-order merchants
-- top-N ranking with tie handling
-- customer cross-vertical classification
-- monthly percentage of customers ordering from both business lines
-
-The repository is intentionally clean and runnable, making it useful both as a portfolio artifact and as an interview review lab.
+> This case shows both operational and behavioral analytics in the same repository: merchant ranking, inclusion of zero-order merchants, top-N with ties, and monthly cross-vertical customer behavior.
