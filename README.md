@@ -39,6 +39,22 @@ O repositório cobre um cenário comum em plataformas transacionais com múltipl
 - análise cross-vertical
 - cohorting mensal com `DATE(..., 'start of month')`
 
+## Estrutura analítica do case
+
+O repositório foi organizado para cobrir dois blocos de problema muito comuns em analytics de marketplace:
+
+### 1. Merchant-side analytics
+
+- volume por merchant
+- inclusão de entidades sem pedidos
+- ranking com empate
+
+### 2. Customer behavior analytics
+
+- classificação de clientes por vertical
+- identificação de clientes `both`
+- evolução mensal de adoção cross-vertical
+
 ## Modelo de dados
 
 ### `delivery_orders`
@@ -111,6 +127,17 @@ sqlite3 marketplace_sql_case.db
 
 - `2021-01-01 | 0.05`
 - `2021-02-01 | 0.07`
+
+## Como ler este repositório tecnicamente
+
+- `01_schema.sql`
+  - define o modelo relacional mínimo
+- `02_seed_data.sql`
+  - cria um dataset pequeno, mas suficiente para validar os casos
+- `03` e `04`
+  - cobrem merchant-level analytics
+- `05` e `06`
+  - cobrem customer-level cross-vertical analytics
 
 ## Como defender em entrevista
 
