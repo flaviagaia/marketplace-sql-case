@@ -16,12 +16,12 @@ Ele cobre:
 
 ### Estrutura
 
-- [sql/01_schema.sql](/Users/flaviagaia/Documents/CV_FLAVIA_CODEX/marketplace-sql-case/sql/01_schema.sql)
-- [sql/02_seed_data.sql](/Users/flaviagaia/Documents/CV_FLAVIA_CODEX/marketplace-sql-case/sql/02_seed_data.sql)
-- [sql/03_q1a_business_order_counts.sql](/Users/flaviagaia/Documents/CV_FLAVIA_CODEX/marketplace-sql-case/sql/03_q1a_business_order_counts.sql)
-- [sql/04_q1b_top3_rx_last_quarter.sql](/Users/flaviagaia/Documents/CV_FLAVIA_CODEX/marketplace-sql-case/sql/04_q1b_top3_rx_last_quarter.sql)
-- [sql/05_q2a_query_explanation.sql](/Users/flaviagaia/Documents/CV_FLAVIA_CODEX/marketplace-sql-case/sql/05_q2a_query_explanation.sql)
-- [sql/06_q2b_cross_vertical_monthly_pct.sql](/Users/flaviagaia/Documents/CV_FLAVIA_CODEX/marketplace-sql-case/sql/06_q2b_cross_vertical_monthly_pct.sql)
+- [sql/01_schema.sql](sql/01_schema.sql)
+- [sql/02_seed_data.sql](sql/02_seed_data.sql)
+- [sql/03_q1a_business_order_counts.sql](sql/03_q1a_business_order_counts.sql)
+- [sql/04_q1b_top3_rx_last_quarter.sql](sql/04_q1b_top3_rx_last_quarter.sql)
+- [sql/05_q2a_query_explanation.sql](sql/05_q2a_query_explanation.sql)
+- [sql/06_q2b_cross_vertical_monthly_pct.sql](sql/06_q2b_cross_vertical_monthly_pct.sql)
 
 ### Estrutura analítica do case
 
@@ -81,9 +81,6 @@ sqlite3 marketplace_sql_case.db
 .read sql/06_q2b_cross_vertical_monthly_pct.sql
 ```
 
-### Como defender em entrevista
-
-> Este case mostra analytics operacional e comportamental no mesmo repositório: ranking de merchants, inclusão de zero-order merchants, top-N com empate e comportamento cross-vertical mensal de clientes.
 
 ## English
 
@@ -101,12 +98,12 @@ It covers:
 
 ### Repository structure
 
-- [sql/01_schema.sql](/Users/flaviagaia/Documents/CV_FLAVIA_CODEX/marketplace-sql-case/sql/01_schema.sql)
-- [sql/02_seed_data.sql](/Users/flaviagaia/Documents/CV_FLAVIA_CODEX/marketplace-sql-case/sql/02_seed_data.sql)
-- [sql/03_q1a_business_order_counts.sql](/Users/flaviagaia/Documents/CV_FLAVIA_CODEX/marketplace-sql-case/sql/03_q1a_business_order_counts.sql)
-- [sql/04_q1b_top3_rx_last_quarter.sql](/Users/flaviagaia/Documents/CV_FLAVIA_CODEX/marketplace-sql-case/sql/04_q1b_top3_rx_last_quarter.sql)
-- [sql/05_q2a_query_explanation.sql](/Users/flaviagaia/Documents/CV_FLAVIA_CODEX/marketplace-sql-case/sql/05_q2a_query_explanation.sql)
-- [sql/06_q2b_cross_vertical_monthly_pct.sql](/Users/flaviagaia/Documents/CV_FLAVIA_CODEX/marketplace-sql-case/sql/06_q2b_cross_vertical_monthly_pct.sql)
+- [sql/01_schema.sql](sql/01_schema.sql)
+- [sql/02_seed_data.sql](sql/02_seed_data.sql)
+- [sql/03_q1a_business_order_counts.sql](sql/03_q1a_business_order_counts.sql)
+- [sql/04_q1b_top3_rx_last_quarter.sql](sql/04_q1b_top3_rx_last_quarter.sql)
+- [sql/05_q2a_query_explanation.sql](sql/05_q2a_query_explanation.sql)
+- [sql/06_q2b_cross_vertical_monthly_pct.sql](sql/06_q2b_cross_vertical_monthly_pct.sql)
 
 ### Analytical structure
 
@@ -166,6 +163,3 @@ sqlite3 marketplace_sql_case.db
 .read sql/06_q2b_cross_vertical_monthly_pct.sql
 ```
 
-### Interview framing
-
-> This case shows both operational and behavioral analytics in the same repository: merchant ranking, inclusion of zero-order merchants, top-N with ties, and monthly cross-vertical customer behavior.
